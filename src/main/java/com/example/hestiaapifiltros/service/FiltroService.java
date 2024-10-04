@@ -3,6 +3,7 @@ package com.example.hestiaapifiltros.service;
 import com.example.hestiaapifiltros.model.Filtro;
 import com.example.hestiaapifiltros.repository.FiltroRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -14,11 +15,13 @@ public class FiltroService {
     }
 
     // get all
+    @Transactional
     public List<Filtro> getAllFiltros() {
         return filtroRepository.findAll();
     }
 
     // get by categoria
+    @Transactional
     public List<Filtro> getByCategoria(String ccategoria){
         return filtroRepository.findFiltroByCcategoriaIgnoreCase(ccategoria);
     }

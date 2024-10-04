@@ -36,7 +36,7 @@ public class FiltroController {
         return filtroService.getAllFiltros();
     }
 
-    @GetMapping("/categoria")
+    @GetMapping("/categoria/{categoria}")
     @Operation(summary = "Lista todos os filtros cadastrados de uma categoria",
             description = "Retorna uma lista com todos os filtros cadastrados de uma categoria")
     @ApiResponses(value = {
