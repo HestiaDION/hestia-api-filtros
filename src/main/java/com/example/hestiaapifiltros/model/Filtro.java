@@ -5,7 +5,7 @@ import jakarta.persistence.Id;
 
 import java.util.UUID;
 
-@Entity(name = "filtros")
+@Entity(name = "filtro")
 public class Filtro {
     @Id
     UUID uid;
