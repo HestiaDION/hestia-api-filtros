@@ -25,4 +25,9 @@ public class FiltroService {
     public List<Filtro> getByCategoria(String ccategoria){
         return filtroRepository.findFiltroByCcategoriaIgnoreCase(ccategoria);
     }
+
+    // get de categorias diferentes
+    public List<String> findCategorias(){
+        return filtroRepository.findCategorias();
+    }
 }

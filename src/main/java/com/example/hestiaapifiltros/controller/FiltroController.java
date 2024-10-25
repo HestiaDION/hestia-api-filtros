@@ -50,4 +50,17 @@ public class FiltroController {
     public List<Filtro> getAllFiltrosByCategoria(@Parameter(name = "categoria", description = "É necessário uma categoria", required = true) @PathVariable String categoria) {
         return filtroService.getByCategoria(categoria);
     }
+
+    @GetMapping("/")
+    @Operation(summary = "Lista todos as diferentes categorias",
+            description = "Retorna uma lista com todos categorias")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Categorias retornadas com sucesso!",
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = Filtro.class))),
+            @ApiResponse(responseCode = "500", description = "Erro interno do servidor",
+                    content = @Content())
+    })
+    public List<String> getCategorias() {
+        return filtroService.findCategorias();
+    }
 }
