@@ -8,6 +8,8 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -73,7 +75,7 @@ public class FiltroController {
             @ApiResponse(responseCode = "500", description = "Erro interno do servidor",
                     content = @Content())
     })
-    public String getCategoriaByNome(@Parameter(name = "cnome", description = "É necessário o nome do filtro", required = true) @PathVariable String cnome) {
-        return filtroService.getCategoriaByNome(cnome);
+    public ResponseEntity<String> getCategoriaByNome(@Parameter(name = "cnome", description = "É necessário o nome do filtro", required = true) @PathVariable String cnome) {
+        return new ResponseEntity<>(filtroService.getCategoriaByNome(cnome), HttpStatus.OK);
     }
 }
