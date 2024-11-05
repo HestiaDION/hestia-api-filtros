@@ -13,4 +13,6 @@ public interface FiltroRepository extends JpaRepository<Filtro, UUID> {
     List<Filtro> findFiltroByCcategoriaIgnoreCase(String ccategoria);
     @Query("SELECT DISTINCT f.ccategoria FROM filtro f")
     List<String> findCategorias();
+    @Query("SELECT DISTINCT f.ccategoria FROM filtro f WHERE lower(f.cnome) = lower(:cnome)")
+    String getCategoriaByNome(String cnome);
 }

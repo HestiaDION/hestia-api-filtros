@@ -27,7 +27,13 @@ public class FiltroService {
     }
 
     // get de categorias diferentes
+    @Transactional
     public List<String> findCategorias(){
         return filtroRepository.findCategorias();
     }
+    @Transactional
+    public String getCategoriaByNome(String cnome) {
+        return filtroRepository.getCategoriaByNome(cnome);
+    }
+
 }

@@ -53,7 +53,7 @@ public class FiltroController {
 
     @GetMapping("/")
     @Operation(summary = "Lista todos as diferentes categorias",
-            description = "Retorna uma lista com todos categorias")
+            description = "Retorna uma lista com todas as categorias")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Categorias retornadas com sucesso!",
                     content = @Content(mediaType = "application/json", schema = @Schema(implementation = Filtro.class))),
@@ -62,5 +62,18 @@ public class FiltroController {
     })
     public List<String> getCategorias() {
         return filtroService.findCategorias();
+    }
+
+    @GetMapping("/getCategoria/{cnome}")
+    @Operation(summary = "Retorna a categoria de acordo com o nome",
+            description = "Retorna a categoria de acordo com o nome")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Categorias retornadas com sucesso!",
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = Filtro.class))),
+            @ApiResponse(responseCode = "500", description = "Erro interno do servidor",
+                    content = @Content())
+    })
+    public String getCategoriaByNome(@Parameter(name = "cnome", description = "É necessário o nome do filtro", required = true) @PathVariable String cnome) {
+        return filtroService.getCategoriaByNome(cnome);
     }
 }
