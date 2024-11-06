@@ -75,7 +75,9 @@ public class FiltroController {
             @ApiResponse(responseCode = "500", description = "Erro interno do servidor",
                     content = @Content())
     })
-    public ResponseEntity<String> getCategoriaByNome(@Parameter(name = "cnome", description = "É necessário o nome do filtro", required = true) @PathVariable String cnome) {
-        return new ResponseEntity<>(filtroService.getCategoriaByNome(cnome), HttpStatus.OK);
+    public ResponseEntity<HashMap<String, String>> getCategoriaByNome(@Parameter(name = "cnome", description = "É necessário o nome do filtro", required = true) @PathVariable String cnome) {
+        HashMap<String, String> retorno = new HashMap<>();
+        retorno.put("categoria", filtroService.getCategoriaByNome(cnome));
+        return new ResponseEntity<>(retorno, HttpStatus.OK);
     }
 }
